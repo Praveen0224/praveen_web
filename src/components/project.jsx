@@ -1,283 +1,135 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import { ExternalLink, Github, ArrowUpRight, Layout, Cpu, Globe, Layers } from 'lucide-react';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Github, ExternalLink, ArrowUpRight } from 'lucide-react';
 
 const Projects = () => {
-  const [hoveredIndex, setHoveredIndex] = useState(null);
-  const [isDesktop, setIsDesktop] = useState(false);
-
-  // Scroll Progress for Typography Animation
-  const { scrollYProgress } = useScroll();
-  const textFillWidth = useTransform(scrollYProgress, [0.1, 0.3], ["0%", "100%"]);
-
-  useEffect(() => {
-    const handleResize = () => setIsDesktop(window.innerWidth > 992);
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
   const projectData = [
     {
       id: 1,
       title: "E-Commerce Marketplace",
-      desc: "Fullstack platform with Stripe & Admin Dashboard. Optimized for high-speed transactions.",
+      desc: "High-performance fullstack platform with secure payments and seamless UX.",
       tech: ["Next.js", "MongoDB", "Stripe"],
       img: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&q=80",
-      gridArea: '1 / 1 / 3 / 3',
-      icon: <Layout size={18} />
     },
     {
       id: 2,
-      title: "AI Chat App",
-      desc: "Socket.io real-time encryption and neural network integration.",
+      title: "AI Chat Application",
+      desc: "Real-time chat experience powered by AI with fast communication.",
       tech: ["Socket.io", "Tailwind", "OpenAI"],
       img: "https://images.unsplash.com/photo-1618005182382-a4d449d16b2f?w=800&q=80",
-      gridArea: '1 / 3 / 2 / 4',
-      icon: <Globe size={18} />
     },
     {
       id: 3,
-      title: "Job Analytics",
-      desc: "AI matching & resume parsing with data visualization.",
+      title: "Job Analytics Platform",
+      desc: "Smart job matching system with resume parsing and data visualization.",
       tech: ["TypeScript", "Firebase", "D3.js"],
       img: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&q=80",
-      gridArea: '2 / 3 / 3 / 4',
-      icon: <Cpu size={18} />
     },
-    {
-      id: 4,
-      title: "Task SaaS",
-      desc: "Collaborative Kanban with real-time sync and enterprise security.",
-      tech: ["React", "PostgreSQL", "Redis"],
-      img: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&q=80",
-      gridArea: '3 / 1 / 4 / 4',
-      icon: <Layers size={18} />
-    }
   ];
 
   return (
-    <section style={styles.sectionWrapper} id="projects">
-      <div style={styles.container}>
+    <section className="bg-[#050a0a] text-white py-24 px-6 overflow-hidden relative" id="projects">
+      
+      {/* BACKGROUND AMBIENCE */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#10b981]/5 blur-[120px] rounded-full pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto relative">
         
-        {/* Advanced Interactive Header */}
-        <header style={styles.header}>
-          <div style={{ position: 'relative' }}>
-            <span style={styles.subHeader}>Portfolio</span>
-            <h2 style={styles.mainTitle}>
-              Selected <br />
-              <span style={styles.accentTextContainer}>
-                Works
-                <motion.span 
-                    style={{ ...styles.accentTextFill, width: textFillWidth }}
-                >
-                    Works
-                </motion.span>
-              </span>
+        {/* HEADER */}
+        <header className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
+          <div className="max-w-2xl">
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              className="text-[#10b981] font-mono text-[10px] tracking-[6px] mb-4 uppercase flex items-center gap-2"
+            >
+              <span className="w-8 h-[1px] bg-[#10b981]"></span> Portfolio
+            </motion.div>
+            
+            <h2 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[0.9]">
+              Selected <span className="text-[#10b981]">Works.</span>
             </h2>
           </div>
           
-          <div style={styles.headerRight}>
-             <motion.div 
-                animate={{ width: [0, 60, 40] }}
-                transition={{ duration: 1, repeat: Infinity, repeatType: 'reverse' }}
-                style={styles.divider} 
-             />
-             <p style={styles.headerDesc}>
-               Creating digital experiences where <br /> 
-               <span style={{ color: '#fff' }}>logic meets artistry.</span>
-             </p>
-          </div>
+          <p className="text-white/40 text-sm md:text-base leading-relaxed max-w-xs font-mono uppercase tracking-widest">
+            // Building digital <br /> ecosystems that scale.
+          </p>
         </header>
 
-        {/* 3D-Tilt Bento Grid */}
-        <div style={styles.bentoGrid}>
+        {/* PROJECT GRID */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
           {projectData.map((project, index) => (
             <motion.div
               key={project.id}
-              style={{
-                ...styles.card,
-                gridArea: isDesktop ? project.gridArea : 'auto'
-              }}
-              onHoverStart={() => setHoveredIndex(index)}
-              onHoverEnd={() => setHoveredIndex(null)}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              whileHover={{ 
-                y: -10, 
-                rotateX: 2, 
-                rotateY: -2,
-                boxShadow: "0 30px 60px rgba(0,0,0,0.5)" 
-              }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="group relative"
             >
-              <div style={styles.imageContainer}>
-                <motion.img 
-                  src={project.img} 
-                  alt={project.title} 
-                  animate={{ 
-                    scale: hoveredIndex === index ? 1.15 : 1,
-                    filter: hoveredIndex === index ? 'grayscale(0%) brightness(1)' : 'grayscale(60%) brightness(0.6)'
-                  }}
-                  transition={{ duration: 0.6 }}
-                  style={styles.image} 
-                />
-                
-                <AnimatePresence>
-                  {hoveredIndex === index && (
-                    <motion.div 
-                      initial={{ opacity: 0, backdropFilter: 'blur(0px)' }}
-                      animate={{ opacity: 1, backdropFilter: 'blur(10px)' }}
-                      exit={{ opacity: 0, backdropFilter: 'blur(0px)' }}
-                      style={styles.imageOverlay}
-                    >
-                      <motion.div 
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        style={styles.overlayIcons}
-                      >
-                        <motion.a whileHover={{ scale: 1.2, rotate: -10 }} href="#" style={styles.iconCircle}><Github size={20} /></motion.a>
-                        <motion.a whileHover={{ scale: 1.2, rotate: 10 }} href="#" style={styles.iconCircle}><ExternalLink size={20} /></motion.a>
-                      </motion.div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+              {/* SOLID BACKGROUND NUMBER */}
+              <div className="absolute -top-10 -left-6 text-7xl font-black opacity-[0.03] select-none pointer-events-none group-hover:opacity-[0.08] transition-opacity duration-500 text-white">
+                0{project.id}
               </div>
 
-              <div style={styles.content}>
-                <div style={styles.cardHeader}>
-                  <motion.div 
-                    animate={{ x: hoveredIndex === index ? 5 : 0 }}
-                    style={styles.categoryBadge}
+              {/* IMAGE WRAPPER (No Outlines) */}
+              <div className="relative aspect-[4/5] overflow-hidden rounded-sm mb-8 bg-gray-900">
+                <img 
+                  src={project.img} 
+                  alt={project.title}
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100"
+                />
+                
+                {/* SUBTLE OVERLAY */}
+                <div className="absolute inset-0 bg-[#050a0a]/20 group-hover:bg-transparent transition-colors duration-500" />
+
+                {/* HOVER ACTIONS */}
+                <div className="absolute inset-0 flex items-center justify-center gap-4 bg-[#050a0a]/60 opacity-0 group-hover:opacity-100 transition-all duration-500 backdrop-blur-sm z-20">
+                  <motion.a 
+                    whileHover={{ scale: 1.1 }}
+                    href="#" className="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center hover:bg-[#10b981] hover:text-white transition-colors"
                   >
-                    {project.icon}
-                    <span style={{ marginLeft: '10px' }}>PROJECT / 0{project.id}</span>
-                  </motion.div>
-                  <motion.div animate={{ rotate: hoveredIndex === index ? 45 : 0 }}>
-                    <ArrowUpRight size={24} style={{ color: '#ff4500' }} />
-                  </motion.div>
+                    <Github size={20} />
+                  </motion.a>
+                  <motion.a 
+                    whileHover={{ scale: 1.1 }}
+                    href="#" className="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center hover:bg-[#10b981] hover:text-white transition-colors"
+                  >
+                    <ExternalLink size={20} />
+                  </motion.a>
                 </div>
+              </div>
 
-                <h3 style={styles.cardTitle}>{project.title}</h3>
-                <p style={styles.cardDesc}>{project.desc}</p>
+              {/* PROJECT INFO */}
+              <div className="relative z-30">
+                <div className="flex justify-between items-center mb-4">
+                  <h3 className="text-xl font-bold tracking-tight uppercase group-hover:text-[#10b981] transition-colors duration-300">
+                    {project.title}
+                  </h3>
+                  <ArrowUpRight className="text-white/20 group-hover:text-[#10b981] transition-all duration-300" size={20} />
+                </div>
+                
+                <p className="text-white/40 text-sm leading-relaxed mb-6 font-normal line-clamp-2 group-hover:text-white/60 transition-colors">
+                  {project.desc}
+                </p>
 
-                <div style={styles.tagContainer}>
-                  {project.tech.map(t => (
-                    <span key={t} style={styles.tag}>{t}</span>
+                {/* TECH STACK */}
+                <div className="flex flex-wrap gap-4">
+                  {project.tech.map((t) => (
+                    <span key={t} className="text-[9px] font-mono uppercase tracking-[2px] text-white/30 group-hover:text-[#10b981] transition-colors">
+                      {t}
+                    </span>
                   ))}
                 </div>
               </div>
+
+              {/* BOTTOM ACCENT (Solid Line) */}
+              <div className="absolute -bottom-2 left-0 w-0 h-[2px] bg-[#10b981] group-hover:w-full transition-all duration-700 opacity-50" />
             </motion.div>
           ))}
         </div>
       </div>
     </section>
   );
-};
-
-const styles = {
-  sectionWrapper: {
-    backgroundColor: '#030303',
-    padding: '120px 20px',
-    color: '#fff',
-    fontFamily: "'Inter', sans-serif",
-    perspective: '1000px', // Crucial for 3D tilt
-  },
-  container: { maxWidth: '1300px', margin: '0 auto' },
-  header: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: '80px',
-    flexWrap: 'wrap',
-  },
-  subHeader: {
-    color: '#ff4500',
-    textTransform: 'uppercase',
-    letterSpacing: '6px',
-    fontSize: '12px',
-    fontWeight: '900',
-    marginBottom: '10px',
-    display: 'block'
-  },
-  mainTitle: {
-    fontSize: 'clamp(50px, 10vw, 100px)',
-    fontWeight: '900',
-    lineHeight: '0.8',
-    margin: 0,
-    letterSpacing: '-5px'
-  },
-  accentTextContainer: {
-    position: 'relative',
-    color: 'transparent',
-    WebkitTextStroke: '1px rgba(255,255,255,0.2)',
-    display: 'inline-block'
-  },
-  accentTextFill: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    color: '#ff4500',
-    overflow: 'hidden',
-    whiteSpace: 'nowrap',
-    transition: 'width 0.1s ease-out'
-  },
-  headerRight: { textAlign: 'right', maxWidth: '300px' },
-  divider: { height: '3px', backgroundColor: '#ff4500', marginLeft: 'auto', marginBottom: '15px' },
-  headerDesc: { fontSize: '15px', color: '#666', lineHeight: '1.6' },
-  
-  bentoGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)',
-    gridAutoRows: 'minmax(300px, auto)',
-    gap: '30px',
-  },
-  card: {
-    backgroundColor: '#0a0a0a',
-    borderRadius: '32px',
-    border: '1px solid rgba(255,255,255,0.08)',
-    overflow: 'hidden',
-    display: 'flex',
-    flexDirection: 'column',
-    transformStyle: 'preserve-3d',
-  },
-  imageContainer: { position: 'relative', height: '260px', overflow: 'hidden' },
-  image: { width: '100%', height: '100%', objectFit: 'cover' },
-  imageOverlay: {
-    position: 'absolute',
-    inset: 0,
-    background: 'rgba(255, 69, 0, 0.1)',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  iconCircle: {
-    width: '50px',
-    height: '50px',
-    borderRadius: '50%',
-    backgroundColor: '#fff',
-    color: '#000',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    margin: '0 10px',
-    boxShadow: '0 10px 20px rgba(0,0,0,0.3)'
-  },
-  content: { padding: '32px', flexGrow: 1, display: 'flex', flexDirection: 'column' },
-  cardHeader: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' },
-  categoryBadge: { display: 'flex', alignItems: 'center', fontSize: '11px', color: '#666', fontWeight: '800', letterSpacing: '1px' },
-  cardTitle: { fontSize: '26px', fontWeight: '700', marginBottom: '12px', letterSpacing: '-1px' },
-  cardDesc: { color: '#888', fontSize: '15px', marginBottom: '25px', lineHeight: '1.6' },
-  tagContainer: { display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: 'auto' },
-  tag: {
-    fontSize: '11px',
-    padding: '6px 14px',
-    borderRadius: '100px',
-    backgroundColor: 'rgba(255,255,255,0.03)',
-    border: '1px solid rgba(255,255,255,0.1)',
-    color: '#aaa',
-  }
 };
 
 export default Projects;

@@ -1,165 +1,120 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ArrowRight, Linkedin, Twitter, Instagram, Github } from 'lucide-react';
+import { ArrowUpRight, FileText, Send, Terminal } from 'lucide-react';
 
 const About = () => {
-  // Animation Variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.2 }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: { y: 0, opacity: 1, transition: { duration: 0.6, ease: "easeOut" } }
-  };
+  const stats = [
+    { value: "5+", label: "Project Done" },
+    { value: "20+", label: "Students Mentored" },
+    { value: "2+", label: "Year Experience" },
+    { value: "UI/UX", label: "Design Strategy" },
+  ];
 
   return (
-    <section style={styles.wrapper}>
-      <motion.div 
-        style={styles.gridContainer}
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-      >
-        {/* TOP LEFT: Label & Progress */}
-        <motion.div variants={itemVariants} style={{ ...styles.box, ...styles.gridArea1 }}>
-          <span style={styles.boxLabel}>Developer Platform</span>
-          <div style={styles.pagination}>
-            <span style={styles.activeDot} />
-            {[...Array(3)].map((_, i) => <span key={i} style={styles.dot} />)}
+    <div className="bg-[#050a0a] text-white font-sans min-h-screen flex items-center overflow-hidden relative">
+      
+      {/* THEME AMBIENCE */}
+      <div className="absolute top-[-10%] left-[-10%] w-[70%] h-[50%] bg-[#10b981]/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[40%] bg-[#10b981]/10 blur-[150px] rounded-full pointer-events-none" />
+
+      <section className="max-w-7xl mx-auto w-full px-6 py-12 md:py-20 relative z-10">
+        
+        {/* MAIN CONTENT: Responsive Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 md:gap-16 items-start mb-20 md:mb-32">
+          
+          {/* COLUMN 1: IMAGE */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="relative group max-w-[400px] lg:max-w-none mx-auto lg:mx-0 w-full"
+          >
+            <div className="absolute -inset-2 bg-[#10b981]/20 rounded-lg blur-xl opacity-0 group-hover:opacity-100 transition duration-700"></div>
+            <div className="relative aspect-square bg-gray-900 rounded-sm overflow-hidden border border-white/5">
+              <img 
+                src="/about1.jpg" 
+                alt="Praveen" 
+                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100" 
+              />
+            </div>
+          </motion.div>
+
+          {/* COLUMN 2: BIO */}
+          <div className="flex flex-col pt-0 lg:pt-4">
+            <p className="text-white/60 text-sm md:text-base leading-relaxed mb-6 md:mb-8 relative">
+              <span className="float-left text-5xl md:text-6xl font-serif mr-3 mt-1 text-[#10b981] leading-none font-bold">
+                P
+              </span>
+              raveen is a Full-stack developer architecting high-performance digital products. 
+              He focuses on the intersection of <span className="text-white">technical logic</span> and visual precision, 
+              ensuring that every line of code contributes to a seamless user experience. 
+            </p>
+            
+            <div className="border-l border-[#10b981]/40 pl-6 py-2 italic text-white/30 text-xs md:text-sm">
+              "Building the future of the web through scalable code and intuitive design."
+            </div>
+            
+            <div className="mt-8 flex items-center gap-2 text-[#10b981] text-[10px] font-mono tracking-[4px] uppercase opacity-70">
+              <Terminal size={12} /> // Lead Developer
+            </div>
           </div>
-        </motion.div>
 
-        {/* BOTTOM LEFT: Bio */}
-        <motion.div variants={itemVariants} style={{ ...styles.box, ...styles.gridArea2 }}>
-          <h1 style={styles.name}>Praveen</h1>
-          <p style={styles.role}>Full-Stack Developer</p>
-          <p style={styles.bio}>
-            I'm focused on building high-end digital products. I don't just write code;
-            I engineer experiences that are <span style={{color: '#fff'}}>fast, accessible, and visually stunning.</span>
-          </p>
-        </motion.div>
-
-        {/* CENTER: Image */}
-        <motion.div 
-          variants={itemVariants} 
-          whileHover={{ scale: 1.02 }}
-          style={{ ...styles.imageBox, ...styles.gridArea3 }}
-        >
-          <img
-            src="/about1.jpg" // Replace with your actual path
-            alt="Praveen Portrait"
-            style={styles.portrait}
-          />
-          <div style={styles.imageOverlay} />
-        </motion.div>
-
-        {/* TOP RIGHT: Navigation */}
-        <motion.div variants={itemVariants} style={{ ...styles.box, ...styles.gridArea4 }}>
-          <div style={styles.navGroup}>
-            <motion.div whileHover={{ x: -5 }}><ArrowLeft style={styles.navIcon} size={24} /></motion.div>
-            <motion.div whileHover={{ x: 5 }}><ArrowRight style={{ ...styles.navIcon, color: '#ff6b35' }} size={24} /></motion.div>
-          </div>
-        </motion.div>
-
-        {/* BOTTOM RIGHT: Socials */}
-        <motion.div variants={itemVariants} style={{ ...styles.box, ...styles.gridArea5 }}>
-          <div style={styles.socialGroup}>
-            {[Linkedin, Twitter, Instagram, Github].map((Icon, index) => (
-              <motion.a 
-                key={index}
-                href="#" 
-                whileHover={{ scale: 1.2, color: '#ff6b35' }}
-                style={styles.socialIcon}
+          {/* COLUMN 3: HEADLINE & NEW BUTTONS */}
+          <div className="relative pt-0 lg:pt-4">
+            <span className="text-[#10b981] font-mono text-[10px] tracking-[6px] uppercase mb-4 md:mb-6 block">
+              # Profile
+            </span>
+            <h2 className="text-4xl md:text-5xl xl:text-6xl font-bold leading-[1.1] tracking-tighter relative z-10 mb-8 md:mb-12">
+              Guiding you <br className="hidden md:block"/> through the <br/> 
+              <span className="text-[#10b981]">Digital World.</span>
+            </h2>
+            
+            {/* BUTTON GROUP: Responsive Flex */}
+            <div className="flex flex-col sm:flex-row gap-4 relative z-20">
+              <a 
+                href="#contact" 
+                className="flex items-center justify-center gap-2 px-8 py-4 bg-[#10b981] text-[#050a0a] font-bold text-xs uppercase tracking-widest rounded-sm hover:bg-white transition-all group"
               >
-                <Icon size={22} />
-              </motion.a>
-            ))}
-          </div>
-        </motion.div>
-      </motion.div>
-    </section>
-  );
-};
+                Contact Me <Send size={14} className="group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
+              </a>
+              <a 
+                href="/resume.pdf" 
+                className="flex items-center justify-center gap-2 px-8 py-4 bg-white/5 border border-white/10 text-white font-bold text-xs uppercase tracking-widest rounded-sm hover:bg-white/10 transition-all"
+              >
+                Resume <FileText size={14} />
+              </a>
+            </div>
 
-const styles = {
-  wrapper: {
-    backgroundColor: '#0a0a0b',
-    minHeight: '100vh',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: '20px',
-    fontFamily: "'Inter', sans-serif",
-  },
-  gridContainer: {
-    display: 'grid',
-    // Responsive Grid Logic
-    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-    gridAutoRows: 'minmax(100px, auto)',
-    gap: '16px',
-    maxWidth: '1100px',
-    width: '100%',
-  },
-  box: {
-    backgroundColor: '#161618',
-    borderRadius: '24px',
-    padding: '32px',
-    border: '1px solid rgba(255,255,255,0.05)',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-  },
-  // Grid Area Assignments for Desktop (using Media Queries in real CSS is better, but here we define logic)
-  gridArea1: { gridColumn: 'span 1' },
-  gridArea2: { gridColumn: 'span 1', minHeight: '300px' },
-  gridArea3: { gridColumn: 'span 1', gridRow: 'span 2', height: '100%', minHeight: '400px' },
-  
-  imageBox: {
-    borderRadius: '24px',
-    overflow: 'hidden',
-    position: 'relative',
-    backgroundColor: '#161618',
-    border: '1px solid rgba(255,255,255,0.05)',
-  },
-  portrait: {
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
-  },
-  imageOverlay: {
-    position: 'absolute',
-    top: 0, left: 0, right: 0, bottom: 0,
-    background: 'linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.8))',
-  },
-  boxLabel: {
-    color: '#888',
-    fontSize: '12px',
-    textTransform: 'uppercase',
-    letterSpacing: '1px',
-    marginBottom: '12px'
-  },
-  pagination: { display: 'flex', gap: '8px', alignItems: 'center' },
-  activeDot: { width: '30px', height: '4px', backgroundColor: '#ff6b35', borderRadius: '2px' },
-  dot: { width: '4px', height: '4px', backgroundColor: '#333', borderRadius: '50%' },
-  name: { fontSize: 'clamp(32px, 5vw, 48px)', fontWeight: '700', color: '#fff', margin: '0 0 10px 0' },
-  role: { fontSize: '18px', color: '#ff6b35', marginBottom: '24px', fontWeight: '500' },
-  bio: { fontSize: '16px', color: '#a1a1a1', lineHeight: '1.6' },
-  navGroup: { display: 'flex', gap: '24px', justifyContent: 'center' },
-  navIcon: { cursor: 'pointer', color: '#fff' },
-  socialGroup: { 
-    display: 'flex', 
-    flexDirection: 'row', 
-    justifyContent: 'space-around', 
-    alignItems: 'center',
-    height: '100%' 
-  },
-  socialIcon: { color: '#666', transition: 'color 0.2s' },
+            {/* WATERMARK: Hidden on small mobile to avoid clutter */}
+            <div className="absolute -bottom-16 -right-12 text-[120px] md:text-[180px] font-black select-none pointer-events-none opacity-[0.03] leading-none tracking-tighter hidden sm:block"
+                 style={{ WebkitTextStroke: '1px white', color: 'transparent' }}>
+              About
+            </div>
+          </div>
+        </div>
+
+        {/* BOTTOM STATS: Responsive Columns */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-8 border-t border-white/5 pt-16 md:pt-20">
+          {stats.map((stat, i) => (
+            <motion.div 
+              key={i} 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.1 }}
+              className="group"
+            >
+              <div className="text-5xl md:text-7xl font-bold tracking-tighter text-[#10b981] group-hover:drop-shadow-[0_0_15px_rgba(16,185,129,0.3)] transition-all duration-500">
+                {stat.value}
+              </div>
+              <div className="text-[9px] md:text-[10px] uppercase tracking-[3px] md:tracking-[4px] leading-tight font-mono text-white/20 group-hover:text-white/40 transition-colors mt-2">
+                {stat.label}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+      </section>
+    </div>
+  );
 };
 
 export default About;
