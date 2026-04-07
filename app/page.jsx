@@ -6,15 +6,14 @@ import Services from "../src/components/Services";
 import Projects from "../src/components/project";
 import GallerySection from "../src/components/gallerySection";
 import Footer from "../src/components/Footer";
+import Navbar from "../src/components/Navbar";
 
 export default function Home() {
     return (
         <main>
-            {/* Tailwind Test Banner */}
-            <div className="bg-orange-500 text-white text-center py-2 font-bold animate-pulse">
-                Tailwind CSS 4 is now ACTIVE! 🚀
-            </div>
+            <Navbar />
             <Hero />
+            
             <About />
             <Services />
             <Projects />

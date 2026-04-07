@@ -5,10 +5,12 @@ import GallerySection from './pages/gallerySection'
 import About from './pages/About'
 import Services from './pages/Services'
 import Footer from './pages/Footer'
+import Navbar from './components/Navbar'
 
 function App() {
   return (
     <div>
+      <Navbar/> 
       <Hero/>
       <About/>
       <Services/>

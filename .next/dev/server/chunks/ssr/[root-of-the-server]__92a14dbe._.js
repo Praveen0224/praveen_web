@@ -42,7 +42,7 @@ var __TURBOPACK__imported__module__$5b$next$5d2f$internal$2f$font$2f$google$2f$i
 ;
 ;
 const metadata = {
-    title: "CodeWild Tech",
+    title: "PRAVEEN | DEV",
     description: "Innovative Tech Solutions"
 };
 function RootLayout({ children }) {

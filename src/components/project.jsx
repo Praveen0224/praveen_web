@@ -27,6 +27,27 @@ const Projects = () => {
     },
   ];
 
+  // Parent container animation logic (Stagger children)
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2, // Oru card-kum innoru card-kum 0.2s gap irukum
+      },
+    },
+  };
+
+  // Individual card animation logic
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 }, // Starting position (50px below)
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: 0.8, ease: "easeOut" } 
+    },
+  };
+
   return (
     <section className="bg-[#050a0a] text-white py-24 px-6 overflow-hidden relative" id="projects">
       
@@ -35,17 +56,18 @@ const Projects = () => {
 
       <div className="max-w-7xl mx-auto relative">
         
-        {/* HEADER */}
-        <header className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
+        {/* HEADER ANIMATION */}
+        <motion.header 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8"
+        >
           <div className="max-w-2xl">
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              className="text-[#10b981] font-mono text-[10px] tracking-[6px] mb-4 uppercase flex items-center gap-2"
-            >
+            <div className="text-[#10b981] font-mono text-[10px] tracking-[6px] mb-4 uppercase flex items-center gap-2">
               <span className="w-8 h-[1px] bg-[#10b981]"></span> Portfolio
-            </motion.div>
-            
+            </div>
             <h2 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[0.9]">
               Selected <span className="text-[#10b981]">Works.</span>
             </h2>
@@ -54,16 +76,20 @@ const Projects = () => {
           <p className="text-white/40 text-sm md:text-base leading-relaxed max-w-xs font-mono uppercase tracking-widest">
             // Building digital <br /> ecosystems that scale.
           </p>
-        </header>
+        </motion.header>
 
-        {/* PROJECT GRID */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
-          {projectData.map((project, index) => (
+        {/* PROJECT GRID - This triggers the staggered effect */}
+        <motion.div 
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }} // Card 10% view-la vanthale start aagum
+        >
+          {projectData.map((project) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              variants={cardVariants}
               className="group relative"
             >
               {/* SOLID BACKGROUND NUMBER */}
@@ -71,15 +97,13 @@ const Projects = () => {
                 0{project.id}
               </div>
 
-              {/* IMAGE WRAPPER (No Outlines) */}
+              {/* IMAGE WRAPPER */}
               <div className="relative aspect-[4/5] overflow-hidden rounded-sm mb-8 bg-gray-900">
                 <img 
                   src={project.img} 
                   alt={project.title}
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100"
                 />
-                
-                {/* SUBTLE OVERLAY */}
                 <div className="absolute inset-0 bg-[#050a0a]/20 group-hover:bg-transparent transition-colors duration-500" />
 
                 {/* HOVER ACTIONS */}
@@ -126,7 +150,7 @@ const Projects = () => {
               <div className="absolute -bottom-2 left-0 w-0 h-[2px] bg-[#10b981] group-hover:w-full transition-all duration-700 opacity-50" />
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
