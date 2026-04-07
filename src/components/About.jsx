@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, FileText, Send, Terminal } from 'lucide-react';
+import { FileText, Send, Terminal, Sparkles } from 'lucide-react';
 
 const About = () => {
   const stats = [
@@ -10,8 +10,11 @@ const About = () => {
     { value: "UI/UX", label: "Design Strategy" },
   ];
 
+  // Common class to kill blue/underline globally for these links
+  const linkReset = "no-underline !no-underline !decoration-transparent border-none outline-none shadow-none";
+
   return (
-    <div className="bg-[#050a0a] text-white font-sans min-h-screen flex items-center overflow-hidden relative">
+    <div className="bg-[#050a0a] text-white font-sans min-h-screen flex items-center overflow-hidden relative" id="about">
       
       {/* THEME AMBIENCE */}
       <div className="absolute top-[-10%] left-[-10%] w-[70%] h-[50%] bg-[#10b981]/5 blur-[120px] rounded-full pointer-events-none" />
@@ -24,12 +27,13 @@ const About = () => {
           
           {/* COLUMN 1: IMAGE */}
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
             className="relative group max-w-[400px] lg:max-w-none mx-auto lg:mx-0 w-full"
           >
-            <div className="absolute -inset-2 bg-[#10b981]/20 rounded-lg blur-xl opacity-0 group-hover:opacity-100 transition duration-700"></div>
-            <div className="relative aspect-square bg-gray-900 rounded-sm overflow-hidden border border-white/5">
+            <div className="absolute -inset-1 bg-gradient-to-tr from-[#10b981]/20 to-transparent rounded-lg blur-lg opacity-0 group-hover:opacity-100 transition duration-700"></div>
+            <div className="relative aspect-[4/5] bg-[#0a0f0f] rounded-lg overflow-hidden ">
               <img 
                 src="/about1.jpg" 
                 alt="Praveen" 
@@ -39,73 +43,102 @@ const About = () => {
           </motion.div>
 
           {/* COLUMN 2: BIO */}
-          <div className="flex flex-col pt-0 lg:pt-4">
-            <p className="text-white/60 text-sm md:text-base leading-relaxed mb-6 md:mb-8 relative">
-              <span className="float-left text-5xl md:text-6xl font-serif mr-3 mt-1 text-[#10b981] leading-none font-bold">
-                P
-              </span>
-              raveen is a Full-stack developer architecting high-performance digital products. 
-              He focuses on the intersection of <span className="text-white">technical logic</span> and visual precision, 
-              ensuring that every line of code contributes to a seamless user experience. 
-            </p>
-            
-            <div className="border-l border-[#10b981]/40 pl-6 py-2 italic text-white/30 text-xs md:text-sm">
-              "Building the future of the web through scalable code and intuitive design."
-            </div>
-            
-            <div className="mt-8 flex items-center gap-2 text-[#10b981] text-[10px] font-mono tracking-[4px] uppercase opacity-70">
-              <Terminal size={12} /> // Lead Developer
-            </div>
-          </div>
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex flex-col pt-0 lg:pt-4"
+          >
+            <p className="text-white/70 text-sm md:text-base leading-relaxed mb-6 md:mb-8">
+  <span className="block text-white text-lg md:text-xl font-semibold mb-2">
+    I design experiences. I build products.
+  </span>
 
-          {/* COLUMN 3: HEADLINE & NEW BUTTONS */}
-          <div className="relative pt-0 lg:pt-4">
-            <span className="text-[#10b981] font-mono text-[10px] tracking-[6px] uppercase mb-4 md:mb-6 block">
-              # Profile
-            </span>
+  A UI/UX designer and full-stack developer with 2+ years of hands-on experience, I craft digital solutions that are not just functional—but meaningful. From intuitive interfaces to scalable web applications, I blend 
+  <span className="text-white font-semibold"> creativity</span> with 
+  <span className="text-white font-semibold"> clean code</span> to bring ideas to life.  
+
+  <br /><br />
+
+  Beyond building products, I mentor and train aspiring designers and developers through structured courses—helping them 
+  <span className="text-white font-semibold"> think</span>, 
+  <span className="text-white font-semibold"> create</span>, and 
+  <span className="text-white font-semibold"> grow</span> in the real world.
+</p>
+            
+            <div className="border-l-2 border-[#10b981] pl-6 py-1 italic text-white/40 text-xs md:text-sm bg-white/[0.02] rounded-r-lg">
+              "Transforming complex problems into elegant, functional digital solutions."
+            </div>
+            
+            <div className="mt-10 flex items-center gap-3 text-[#10b981] text-[10px] font-mono tracking-[4px] uppercase opacity-80">
+              <div className="w-8 h-[1px] bg-[#10b981]/30"></div>
+              <Terminal size={14} /> // Lead Developer
+            </div>
+          </motion.div>
+
+          {/* COLUMN 3: HEADLINE & PREMIUM BUTTONS */}
+          <motion.div 
+             initial={{ opacity: 0, x: 20 }}
+             whileInView={{ opacity: 1, x: 0 }}
+             transition={{ duration: 0.6, delay: 0.4 }}
+             className="relative pt-0 lg:pt-4"
+          >
+            <div className="flex items-center gap-2 mb-6">
+              <Sparkles size={14} className="text-[#10b981]" />
+              <span className={`text-[#10b981] font-mono text-[10px] tracking-[6px] uppercase ${linkReset}`}>
+                Profile
+              </span>
+            </div>
+            
             <h2 className="text-4xl md:text-5xl xl:text-6xl font-bold leading-[1.1] tracking-tighter relative z-10 mb-8 md:mb-12">
               Guiding you <br className="hidden md:block"/> through the <br/> 
               <span className="text-[#10b981]">Digital World.</span>
             </h2>
             
-            {/* BUTTON GROUP: Responsive Flex */}
+            {/* BUTTON GROUP */}
             <div className="flex flex-col sm:flex-row gap-4 relative z-20">
-              <a 
+              <motion.a 
                 href="#contact" 
-                className="flex items-center justify-center gap-2 px-8 py-4 bg-[#10b981] text-[#050a0a] font-bold text-xs uppercase tracking-widest rounded-sm hover:bg-white transition-all group"
+                whileHover={{ scale: 1.02, backgroundColor: '#ffffff' }}
+                whileTap={{ scale: 0.98 }}
+                className={`flex items-center justify-center gap-3 px-8 py-4 bg-[#10b981] !text-[#050a0a] font-bold text-[11px] uppercase tracking-[2px] rounded-full transition-all group shadow-[0_10px_20px_rgba(16,185,129,0.15)] ${linkReset}`}
               >
-                Contact Me <Send size={14} className="group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
-              </a>
-              <a 
+                Contact Me 
+                <Send size={14} className="group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
+              </motion.a>
+
+              <motion.a 
                 href="/resume.pdf" 
-                className="flex items-center justify-center gap-2 px-8 py-4 bg-white/5 border border-white/10 text-white font-bold text-xs uppercase tracking-widest rounded-sm hover:bg-white/10 transition-all"
+                whileHover={{ scale: 1.02, backgroundColor: 'rgba(255,255,255,0.1)' }}
+                whileTap={{ scale: 0.98 }}
+                className={`flex items-center justify-center gap-3 px-8 py-4 bg-transparent border border-white/10 !text-white font-bold text-[11px] uppercase tracking-[2px] rounded-full transition-all ${linkReset}`}
               >
                 Resume <FileText size={14} />
-              </a>
+              </motion.a>
             </div>
 
-            {/* WATERMARK: Hidden on small mobile to avoid clutter */}
-            <div className="absolute -bottom-16 -right-12 text-[120px] md:text-[180px] font-black select-none pointer-events-none opacity-[0.03] leading-none tracking-tighter hidden sm:block"
+            {/* WATERMARK */}
+            <div className="absolute -bottom-16 -right-12 text-[120px] md:text-[180px] font-black select-none pointer-events-none opacity-[0.02] leading-none tracking-tighter hidden sm:block"
                  style={{ WebkitTextStroke: '1px white', color: 'transparent' }}>
               About
             </div>
-          </div>
+          </motion.div>
         </div>
 
-        {/* BOTTOM STATS: Responsive Columns */}
+        {/* BOTTOM STATS */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-8 border-t border-white/5 pt-16 md:pt-20">
           {stats.map((stat, i) => (
             <motion.div 
               key={i} 
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
               className="group"
             >
-              <div className="text-5xl md:text-7xl font-bold tracking-tighter text-[#10b981] group-hover:drop-shadow-[0_0_15px_rgba(16,185,129,0.3)] transition-all duration-500">
+              <div className="text-5xl md:text-7xl font-bold tracking-tighter text-[#10b981] group-hover:drop-shadow-[0_0_15px_rgba(16,185,129,0.3)] transition-all duration-500 select-none">
                 {stat.value}
               </div>
-              <div className="text-[9px] md:text-[10px] uppercase tracking-[3px] md:tracking-[4px] leading-tight font-mono text-white/20 group-hover:text-white/40 transition-colors mt-2">
+              <div className="text-[10px] uppercase tracking-[4px] leading-tight font-mono text-white/30 group-hover:text-[#10b981] transition-colors mt-3">
                 {stat.label}
               </div>
             </motion.div>
