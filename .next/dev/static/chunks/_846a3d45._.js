@@ -893,7 +893,7 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
-const Services = ()=>{
+const Services = ({ onOpenContactForm })=>{
     _s();
     const [index, setIndex] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(0);
     const services = [
@@ -1097,7 +1097,8 @@ const Services = ()=>{
                                 delay: i * 0.1
                             },
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ServiceCard, {
-                                service: service
+                                service: service,
+                                onOpenContactForm: onOpenContactForm
                             }, void 0, false, {
                                 fileName: "[project]/src/components/Services.jsx",
                                 lineNumber: 64,
@@ -1138,7 +1139,8 @@ const Services = ()=>{
                                 className: "w-full",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ServiceCard, {
                                     service: services[index],
-                                    isMobile: true
+                                    isMobile: true,
+                                    onOpenContactForm: onOpenContactForm
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/Services.jsx",
                                     lineNumber: 83,
@@ -1188,11 +1190,14 @@ const Services = ()=>{
 };
 _s(Services, "c3fuAdVwNN91t4bNS1qBXl5hAWY=");
 _c = Services;
-const ServiceCard = ({ service, isMobile = false })=>{
+const ServiceCard = ({ service, isMobile = false, onOpenContactForm })=>{
     const isHighlight = service.isContact;
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+        type: "button",
+        onClick: isHighlight ? onOpenContactForm : undefined,
         className: `
-      relative group flex items-center rounded-2xl overflow-hidden h-32 transition-all duration-500 cursor-pointer  w-full
+      relative group flex items-center rounded-2xl overflow-hidden h-32 transition-all duration-500 cursor-pointer w-full border-none p-0
+      text-left
       ${isHighlight ? 'bg-[#10b981] !text-black shadow-[0_10px_30px_rgba(16,185,129,0.2)]' : 'bg-[#0a0f0f] hover:bg-[#0e1414]'}
     `,
         children: [
@@ -1203,7 +1208,7 @@ const ServiceCard = ({ service, isMobile = false })=>{
                     size: isMobile ? 22 : 28
                 }, void 0, false, {
                     fileName: "[project]/src/components/Services.jsx",
-                    lineNumber: 113,
+                    lineNumber: 117,
                     columnNumber: 11
                 }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
                     children: [
@@ -1213,21 +1218,21 @@ const ServiceCard = ({ service, isMobile = false })=>{
                             alt: ""
                         }, void 0, false, {
                             fileName: "[project]/src/components/Services.jsx",
-                            lineNumber: 116,
+                            lineNumber: 120,
                             columnNumber: 13
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "absolute inset-0 bg-gradient-to-r from-transparent to-[#0a0f0f]"
                         }, void 0, false, {
                             fileName: "[project]/src/components/Services.jsx",
-                            lineNumber: 117,
+                            lineNumber: 121,
                             columnNumber: 13
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true)
             }, void 0, false, {
                 fileName: "[project]/src/components/Services.jsx",
-                lineNumber: 111,
+                lineNumber: 115,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1242,7 +1247,7 @@ const ServiceCard = ({ service, isMobile = false })=>{
                         children: service.title
                     }, void 0, false, {
                         fileName: "[project]/src/components/Services.jsx",
-                        lineNumber: 124,
+                        lineNumber: 128,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1254,13 +1259,13 @@ const ServiceCard = ({ service, isMobile = false })=>{
                         children: service.desc
                     }, void 0, false, {
                         fileName: "[project]/src/components/Services.jsx",
-                        lineNumber: 131,
+                        lineNumber: 135,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/Services.jsx",
-                lineNumber: 123,
+                lineNumber: 127,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1275,17 +1280,17 @@ const ServiceCard = ({ service, isMobile = false })=>{
                         strokeWidth: 3
                     }, void 0, false, {
                         fileName: "[project]/src/components/Services.jsx",
-                        lineNumber: 146,
+                        lineNumber: 150,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0))
                 }, void 0, false, {
                     fileName: "[project]/src/components/Services.jsx",
-                    lineNumber: 142,
+                    lineNumber: 146,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/src/components/Services.jsx",
-                lineNumber: 141,
+                lineNumber: 145,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0))
         ]
@@ -1691,12 +1696,33 @@ const imagesRow1 = [
     "/gallery/gallery4.jpg",
     "/gallery/gallery5.jpg"
 ];
-const imagesRow2 = [
-    "/gallery/gallery6.jpg",
-    "/gallery/gallery7.jpg",
-    "/gallery/gallery8.jpg",
-    "/gallery/gallery9.jpg",
-    "/gallery/gallery10.jpg"
+// NEW: Review Data for the second row
+const reviews = [
+    {
+        name: "Alex Rivera",
+        role: "Digital Artist",
+        text: "The creative direction here is unmatched. Truly a transformative experience for my project."
+    },
+    {
+        name: "Sarah Chen",
+        role: "Student",
+        text: "Learning here opened my eyes to new design possibilities. The mentors are incredible!"
+    },
+    {
+        name: "Marcus Thorne",
+        role: "Project Manager",
+        text: "Professional, sleek, and highly efficient. They delivered exactly what we envisioned."
+    },
+    {
+        name: "Elena G.",
+        role: "Freelance Designer",
+        text: "A perfect space for collaboration. The environment alone boosts your creativity."
+    },
+    {
+        name: "Jordan Smith",
+        role: "UI/UX Student",
+        text: "The best hands-on coding and design training I have ever received. 10/10!"
+    }
 ];
 function GallerySection() {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1711,7 +1737,7 @@ function GallerySection() {
                 children: "Studio"
             }, void 0, false, {
                 fileName: "[project]/src/components/gallerySection.jsx",
-                lineNumber: 25,
+                lineNumber: 46,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1725,10 +1751,10 @@ function GallerySection() {
                             opacity: 1
                         },
                         className: "text-[#10b981] font-mono text-[10px] tracking-[6px] mb-4 uppercase",
-                        children: "// Visuals"
+                        children: "// Visuals & Feedback"
                     }, void 0, false, {
                         fileName: "[project]/src/components/gallerySection.jsx",
-                        lineNumber: 31,
+                        lineNumber: 52,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -1740,19 +1766,19 @@ function GallerySection() {
                                 children: "Space."
                             }, void 0, false, {
                                 fileName: "[project]/src/components/gallerySection.jsx",
-                                lineNumber: 39,
+                                lineNumber: 60,
                                 columnNumber: 20
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/gallerySection.jsx",
-                        lineNumber: 38,
+                        lineNumber: 59,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/gallerySection.jsx",
-                lineNumber: 30,
+                lineNumber: 51,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1785,7 +1811,7 @@ function GallerySection() {
                                             className: "w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/gallerySection.jsx",
-                                            lineNumber: 55,
+                                            lineNumber: 75,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1798,7 +1824,7 @@ function GallerySection() {
                                                         children: "Project Visual"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/gallerySection.jsx",
-                                                        lineNumber: 64,
+                                                        lineNumber: 82,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1806,34 +1832,34 @@ function GallerySection() {
                                                         children: "Digital Interaction // 2024"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/gallerySection.jsx",
-                                                        lineNumber: 67,
+                                                        lineNumber: 85,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/gallerySection.jsx",
-                                                lineNumber: 63,
+                                                lineNumber: 81,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/gallerySection.jsx",
-                                            lineNumber: 62,
+                                            lineNumber: 80,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, index, true, {
                                     fileName: "[project]/src/components/gallerySection.jsx",
-                                    lineNumber: 53,
+                                    lineNumber: 74,
                                     columnNumber: 15
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/src/components/gallerySection.jsx",
-                            lineNumber: 47,
+                            lineNumber: 68,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/gallerySection.jsx",
-                        lineNumber: 46,
+                        lineNumber: 67,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1852,78 +1878,74 @@ function GallerySection() {
                                 ease: "linear"
                             },
                             children: [
-                                ...imagesRow2,
-                                ...imagesRow2
-                            ].map((img, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "w-[300px] md:w-[450px] aspect-video flex-shrink-0 overflow-hidden rounded-sm relative group",
+                                ...reviews,
+                                ...reviews
+                            ].map((review, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "w-[300px] md:w-[400px] p-8 bg-white/5  rounded-sm flex-shrink-0 flex flex-col justify-between",
                                     children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                            src: img,
-                                            alt: "gallery-work",
-                                            className: "w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100"
-                                        }, void 0, false, {
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            className: "text-white/80 italic text-sm md:text-base whitespace-normal leading-relaxed",
+                                            children: [
+                                                '"',
+                                                review.text,
+                                                '"'
+                                            ]
+                                        }, void 0, true, {
                                             fileName: "[project]/src/components/gallerySection.jsx",
-                                            lineNumber: 86,
+                                            lineNumber: 107,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-6",
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500",
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                                        className: "text-white font-bold text-xl tracking-tight uppercase leading-none",
-                                                        children: "Studio Work"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/components/gallerySection.jsx",
-                                                        lineNumber: 95,
-                                                        columnNumber: 21
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                        className: "text-[#10b981] font-mono text-[10px] tracking-[2px] uppercase mt-2",
-                                                        children: "Creative Direction // Visual"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/components/gallerySection.jsx",
-                                                        lineNumber: 98,
-                                                        columnNumber: 21
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/src/components/gallerySection.jsx",
-                                                lineNumber: 94,
-                                                columnNumber: 19
-                                            }, this)
-                                        }, void 0, false, {
+                                            className: "mt-6",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                    className: "text-white font-bold tracking-tight uppercase text-sm",
+                                                    children: review.name
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/gallerySection.jsx",
+                                                    lineNumber: 111,
+                                                    columnNumber: 19
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                    className: "text-[#10b981] font-mono text-[10px] tracking-[2px] uppercase",
+                                                    children: review.role
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/gallerySection.jsx",
+                                                    lineNumber: 114,
+                                                    columnNumber: 19
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
                                             fileName: "[project]/src/components/gallerySection.jsx",
-                                            lineNumber: 93,
+                                            lineNumber: 110,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, index, true, {
                                     fileName: "[project]/src/components/gallerySection.jsx",
-                                    lineNumber: 85,
+                                    lineNumber: 103,
                                     columnNumber: 15
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/src/components/gallerySection.jsx",
-                            lineNumber: 79,
+                            lineNumber: 97,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/gallerySection.jsx",
-                        lineNumber: 78,
+                        lineNumber: 96,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/gallerySection.jsx",
-                lineNumber: 43,
+                lineNumber: 64,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/gallerySection.jsx",
-        lineNumber: 22,
+        lineNumber: 43,
         columnNumber: 5
     }, this);
 }
@@ -2256,7 +2278,7 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
-const Navbar = ()=>{
+const Navbar = ({ onOpenContactForm })=>{
     _s();
     const [isScrolled, setIsScrolled] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
@@ -2363,27 +2385,37 @@ const Navbar = ()=>{
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "hidden md:flex gap-10",
-                        children: navLinks.map((link)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                        children: navLinks.map((link)=>link.name === 'Contact' ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                type: "button",
+                                onClick: onOpenContactForm,
+                                className: "text-[10px] font-black uppercase tracking-[3px] text-white hover:text-[#10b981] transition-all bg-transparent border-none p-0",
+                                children: link.name
+                            }, link.name, false, {
+                                fileName: "[project]/src/components/Navbar.jsx",
+                                lineNumber: 45,
+                                columnNumber: 15
+                            }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
                                 href: link.href,
                                 className: "text-[10px] font-black uppercase tracking-[3px] text-white hover:text-[#10b981] transition-all !no-underline border-none",
                                 children: link.name
                             }, link.name, false, {
                                 fileName: "[project]/src/components/Navbar.jsx",
-                                lineNumber: 44,
-                                columnNumber: 13
+                                lineNumber: 54,
+                                columnNumber: 15
                             }, ("TURBOPACK compile-time value", void 0)))
                     }, void 0, false, {
                         fileName: "[project]/src/components/Navbar.jsx",
                         lineNumber: 42,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                        href: "#contact",
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                        type: "button",
+                        onClick: onOpenContactForm,
                         className: "px-3 py-1.5 md:px-5 md:py-2 bg-white/10 backdrop-blur-md border border-white/20 text-white text-[8px] md:text-[10px] font-black uppercase tracking-[2px] rounded-full hover:bg-[#10b981] hover:text-black transition-all !no-underline",
                         children: "Hire Me"
                     }, void 0, false, {
                         fileName: "[project]/src/components/Navbar.jsx",
-                        lineNumber: 51,
+                        lineNumber: 62,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
@@ -2412,7 +2444,37 @@ const Navbar = ()=>{
                     /* Increased px-4 and gap to make it wider */ className: "pointer-events-auto bg-white/5 backdrop-blur-2xl p-2 px-4 rounded-full shadow-[0_20px_40px_rgba(0,0,0,0.5)] flex items-center ",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "flex items-center gap-3",
-                        children: navLinks.map((link, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].a, {
+                        children: navLinks.map((link, index)=>link.name === 'Contact' ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].button, {
+                                type: "button",
+                                onClick: onOpenContactForm,
+                                initial: {
+                                    scale: 0
+                                },
+                                animate: {
+                                    scale: 1
+                                },
+                                transition: {
+                                    delay: 0.7 + index * 0.1
+                                },
+                                whileTap: {
+                                    scale: 0.8
+                                },
+                                className: "p-3.5 rounded-full text-white/80 transition-all bg-transparent border-none flex items-center justify-center hover:text-[#10b981] hover:bg-white/10 relative group",
+                                children: [
+                                    link.icon,
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "absolute bottom-1 w-1 h-1 bg-[#10b981] rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/Navbar.jsx",
+                                        lineNumber: 94,
+                                        columnNumber: 19
+                                    }, ("TURBOPACK compile-time value", void 0))
+                                ]
+                            }, link.name, true, {
+                                fileName: "[project]/src/components/Navbar.jsx",
+                                lineNumber: 83,
+                                columnNumber: 17
+                            }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].a, {
                                 href: link.href,
                                 initial: {
                                     scale: 0
@@ -2433,28 +2495,28 @@ const Navbar = ()=>{
                                         className: "absolute bottom-1 w-1 h-1 bg-[#10b981] rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/Navbar.jsx",
-                                        lineNumber: 81,
-                                        columnNumber: 17
+                                        lineNumber: 108,
+                                        columnNumber: 19
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, link.name, true, {
                                 fileName: "[project]/src/components/Navbar.jsx",
-                                lineNumber: 70,
-                                columnNumber: 15
+                                lineNumber: 97,
+                                columnNumber: 17
                             }, ("TURBOPACK compile-time value", void 0)))
                     }, void 0, false, {
                         fileName: "[project]/src/components/Navbar.jsx",
-                        lineNumber: 68,
+                        lineNumber: 80,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0))
                 }, void 0, false, {
                     fileName: "[project]/src/components/Navbar.jsx",
-                    lineNumber: 61,
+                    lineNumber: 73,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/src/components/Navbar.jsx",
-                lineNumber: 60,
+                lineNumber: 72,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("style", {
@@ -2465,16 +2527,15 @@ const Navbar = ()=>{
           border: none !important;
           outline: none !important;
         }
-        /* Button Hover Fix */
-        a[href="#contact"]:hover {
-          color: black !important;
+        button:hover {
+          color: inherit;
         }
         /* Selection & Highlight Fix */
         * { -webkit-tap-highlight-color: transparent; }
       `
             }, void 0, false, {
                 fileName: "[project]/src/components/Navbar.jsx",
-                lineNumber: 89,
+                lineNumber: 117,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0))
         ]

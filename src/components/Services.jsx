@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, Code, Figma, PenTool, Terminal, Users, Mail } from 'lucide-react';
 
-const Services = () => {
+const Services = ({ onOpenContactForm }) => {
   const [index, setIndex] = useState(0);
 
   const services = [
@@ -61,7 +61,7 @@ const Services = () => {
               {...slideInRight}
               transition={{ ...slideInRight.transition, delay: i * 0.1 }}
             >
-              <ServiceCard service={service} />
+              <ServiceCard service={service} onOpenContactForm={onOpenContactForm} />
             </motion.div>
           ))}
         </div>
@@ -80,7 +80,7 @@ const Services = () => {
               transition={{ duration: 0.5 }}
               className="w-full"
             >
-              <ServiceCard service={services[index]} isMobile={true} />
+              <ServiceCard service={services[index]} isMobile={true} onOpenContactForm={onOpenContactForm} />
             </motion.div>
           </AnimatePresence>
           
@@ -99,12 +99,16 @@ const Services = () => {
   );
 };
 
-const ServiceCard = ({ service, isMobile = false }) => {
+const ServiceCard = ({ service, isMobile = false, onOpenContactForm }) => {
   const isHighlight = service.isContact;
   
   return (
-    <div className={`
-      relative group flex items-center rounded-2xl overflow-hidden h-32 transition-all duration-500 cursor-pointer  w-full
+    <button
+      type="button"
+      onClick={isHighlight ? onOpenContactForm : undefined}
+      className={`
+      relative group flex items-center rounded-2xl overflow-hidden h-32 transition-all duration-500 cursor-pointer w-full border-none p-0
+      text-left
       ${isHighlight ? 'bg-[#10b981] !text-black shadow-[0_10px_30px_rgba(16,185,129,0.2)]' : 'bg-[#0a0f0f] hover:bg-[#0e1414]'}
     `}>
       {/* IMAGE / ICON SECTION - Adjusted width for mobile to save space */}
@@ -146,7 +150,7 @@ const ServiceCard = ({ service, isMobile = false }) => {
           <ChevronRight size={isMobile ? 12 : 16} strokeWidth={3} />
         </div>
       </div>
-    </div>
+    </button>
   );
 };
 

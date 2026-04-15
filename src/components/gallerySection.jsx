@@ -7,14 +7,38 @@ const imagesRow1 = [
   "/gallery/gallery3.jpg",
   "/gallery/gallery4.jpg",
   "/gallery/gallery5.jpg",
-];
-
-const imagesRow2 = [
   "/gallery/gallery6.jpg",
   "/gallery/gallery7.jpg",
   "/gallery/gallery8.jpg",
-  "/gallery/gallery9.jpg",
-  "/gallery/gallery10.jpg",
+];
+
+// NEW: Review Data for the second row
+const reviews = [
+  {
+    name: "Alex Rivera",
+    role: "Digital Artist",
+    text: "The creative direction here is unmatched. Truly a transformative experience for my project."
+  },
+  {
+    name: "Sarah Chen",
+    role: "Student",
+    text: "Learning here opened my eyes to new design possibilities. The mentors are incredible!"
+  },
+  {
+    name: "Marcus Thorne",
+    role: "Project Manager",
+    text: "Professional, sleek, and highly efficient. They delivered exactly what we envisioned."
+  },
+  {
+    name: "Elena G.",
+    role: "Freelance Designer",
+    text: "A perfect space for collaboration. The environment alone boosts your creativity."
+  },
+  {
+    name: "Jordan Smith",
+    role: "UI/UX Student",
+    text: "The best hands-on coding and design training I have ever received. 10/10!"
+  },
 ];
 
 export default function GallerySection() {
@@ -33,7 +57,7 @@ export default function GallerySection() {
           whileInView={{ opacity: 1 }}
           className="text-[#10b981] font-mono text-[10px] tracking-[6px] mb-4 uppercase"
         >
-          // Visuals
+          // Visuals & Feedback
         </motion.div>
         <h2 className="text-5xl font-bold tracking-tighter leading-none text-white">
           Creative <span className="opacity-20 font-light">Space.</span>
@@ -42,7 +66,7 @@ export default function GallerySection() {
 
       <div className="flex flex-col gap-8">
         
-        {/* ROW 1 */}
+        {/* ROW 1: IMAGES (Moving Left) */}
         <div className="flex overflow-hidden">
           <motion.div
             className="flex whitespace-nowrap gap-8"
@@ -51,14 +75,11 @@ export default function GallerySection() {
           >
             {[...imagesRow1, ...imagesRow1].map((img, index) => (
               <div key={index} className="w-[300px] md:w-[450px] aspect-video flex-shrink-0 overflow-hidden rounded-sm relative group">
-                {/* IMAGE */}
                 <img 
                   src={img} 
                   alt="gallery-work" 
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100"
                 />
-                
-                {/* OVERLAY: This is what you were missing */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-6">
                   <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                     <h3 className="text-white font-bold text-xl tracking-tight uppercase leading-none">
@@ -74,31 +95,28 @@ export default function GallerySection() {
           </motion.div>
         </div>
 
-        {/* ROW 2 */}
+        {/* ROW 2: REVIEWS (Moving Right) */}
         <div className="flex overflow-hidden">
           <motion.div
             className="flex whitespace-nowrap gap-8"
             animate={{ x: ["-50%", "0%"] }}
             transition={{ repeat: Infinity, duration: 35, ease: "linear" }}
           >
-            {[...imagesRow2, ...imagesRow2].map((img, index) => (
-              <div key={index} className="w-[300px] md:w-[450px] aspect-video flex-shrink-0 overflow-hidden rounded-sm relative group">
-                <img 
-                  src={img} 
-                  alt="gallery-work" 
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100"
-                />
-                
-                {/* OVERLAY */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-6">
-                  <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                    <h3 className="text-white font-bold text-xl tracking-tight uppercase leading-none">
-                      Studio Work
-                    </h3>
-                    <p className="text-[#10b981] font-mono text-[10px] tracking-[2px] uppercase mt-2">
-                      Creative Direction // Visual
-                    </p>
-                  </div>
+            {[...reviews, ...reviews].map((review, index) => (
+              <div 
+                key={index} 
+                className="w-[300px] md:w-[400px] p-8 bg-white/5  rounded-sm flex-shrink-0 flex flex-col justify-between"
+              >
+                <p className="text-white/80 italic text-sm md:text-base whitespace-normal leading-relaxed">
+                  "{review.text}"
+                </p>
+                <div className="mt-6">
+                  <h4 className="text-white font-bold tracking-tight uppercase text-sm">
+                    {review.name}
+                  </h4>
+                  <p className="text-[#10b981] font-mono text-[10px] tracking-[2px] uppercase">
+                    {review.role}
+                  </p>
                 </div>
               </div>
             ))}
