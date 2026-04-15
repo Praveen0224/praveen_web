@@ -46,7 +46,7 @@ const Navbar = ({ onOpenContactForm }) => {
               <a 
                 key={link.name} 
                 href={link.href} 
-                className="text-[10px] font-bold uppercase tracking-[2px] text-white hover:text-white transition-all no-underline relative group"
+                className="text-[10px]  uppercase tracking-[2px] text-white hover:text-white transition-all no-underline relative group"
               >
                 {link.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#10b981] transition-all group-hover:w-full" />
