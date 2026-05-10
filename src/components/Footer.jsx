@@ -12,10 +12,9 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: <Linkedin size={18} />, href: "#" },
-    { icon: <Instagram size={18} />, href: "#" },
-    { icon: <Github size={18} />, href: "#" },
-    { icon: <Mail size={18} />, href: "mailto:hello@praveen.com" },
+    { icon: <Linkedin size={18} />, href: "https://www.linkedin.com/in/praveen-kumar-b07662219/" },
+    { icon: <Instagram size={18} />, href: "https://www.instagram.com/praveen.uiux/" },
+    { icon: <Mail size={18} />, href: "mailto:praveenkumarak02@gmail.com" },
   ];
 
   return (

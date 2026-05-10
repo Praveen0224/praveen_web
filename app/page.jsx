@@ -9,7 +9,7 @@ import GallerySection from "../src/components/gallerySection";
 import Footer from "../src/components/Footer";
 import Navbar from "../src/components/Navbar";
 import ContactRequestModal from "../src/components/ContactRequestModal";
-
+import Experience from "../src/components/Experience";
 export default function Home() {
     const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
@@ -22,6 +22,7 @@ export default function Home() {
             <Hero />
             
             <About />
+            <Experience />
             <Services onOpenContactForm={openContactForm} />
             <Projects />
             <GallerySection />
