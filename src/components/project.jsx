@@ -4,7 +4,7 @@ import { Github, ExternalLink, ArrowUpRight } from 'lucide-react';
 
 const ProjectCard = ({ project, index }) => {
   const cardRef = useRef(null);
-  
+
   // 1. MOUSE TILT LOGIC
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -43,93 +43,97 @@ const ProjectCard = ({ project, index }) => {
   // Each card shifts vertically at a slightly different rate based on its index
   const yOffset = useTransform(scrollYProgress, [0, 1], [index * 20, index * -20]);
 
+  // entry variants fixing layout tracking
   const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { duration: 0.8, ease: "easeOut" } 
+    hidden: { opacity: 0, y: 60 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.215, 0.610, 0.355, 1.000] }
     },
   };
 
   return (
-    <motion.div
-      ref={cardRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      variants={cardVariants}
-      style={{ 
-        y: yOffset,
-        rotateX, 
-        rotateY, 
-        transformStyle: "preserve-3d" 
-      }}
-      className="group relative"
-    >
-      {/* SOLID BACKGROUND NUMBER */}
-      <div className="absolute -top-10 -left-6 text-7xl font-black opacity-[0.03] select-none pointer-events-none group-hover:opacity-[0.08] transition-opacity duration-500 text-white">
-        0{project.id}
-      </div>
-
-      {/* IMAGE WRAPPER */}
-      <div 
-        className="relative aspect-[4/5] overflow-hidden rounded-sm mb-8 bg-gray-900"
-        style={{ transform: "translateZ(30px)" }}
+    // Outer wrapper handles the viewport entrance animation seamlessly
+    <div className="w-full h-full relative">
+      <motion.div
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        variants={cardVariants}
+        style={{
+          y: yOffset, // Combined smoothly with entry animation sequence
+          rotateX,
+          rotateY,
+          transformStyle: "preserve-3d"
+        }}
+        className="group relative"
       >
-        <img 
-          src={project.img} 
-          alt={project.title}
-          className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100"
-        />
-        <div className="absolute inset-0 bg-[#050a0a]/20 group-hover:bg-transparent transition-colors duration-500" />
-
-        {/* HOVER ACTIONS */}
-        <div className="absolute inset-0 flex items-center justify-center gap-4 bg-[#050a0a]/60 opacity-0 group-hover:opacity-100 transition-all duration-500 backdrop-blur-sm z-20">
-          <motion.a 
-            whileHover={{ scale: 1.1 }}
-            href="#" className="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center hover:bg-[#10b981] hover:text-white transition-colors"
-          >
-            <Github size={20} />
-          </motion.a>
-          <motion.a 
-            whileHover={{ scale: 1.1 }}
-            href="#" className="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center hover:bg-[#10b981] hover:text-white transition-colors"
-          >
-            <ExternalLink size={20} />
-          </motion.a>
+        {/* SOLID BACKGROUND NUMBER */}
+        <div className="absolute -top-10 -left-6 text-7xl font-black opacity-[0.03] select-none pointer-events-none group-hover:opacity-[0.08] transition-opacity duration-500 text-white">
+          0{project.id}
         </div>
-      </div>
 
-      {/* PROJECT INFO */}
-      <div className="relative z-30" style={{ transform: "translateZ(50px)" }}>
-        <div className="flex justify-between items-center mb-4">
-          <h3 className="text-xl font-bold tracking-tight uppercase group-hover:text-[#10b981] transition-colors duration-300">
-            {project.title}
-          </h3>
-          <ArrowUpRight className="text-white/20 group-hover:text-[#10b981] transition-all duration-300" size={20} />
+        {/* IMAGE WRAPPER */}
+        <div
+          className="relative aspect-[4/5] overflow-hidden rounded-sm mb-8 bg-gray-900"
+          style={{ transform: "translateZ(30px)" }}
+        >
+          <img
+            src={project.img}
+            alt={project.title}
+            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100"
+          />
+          <div className="absolute inset-0 bg-[#050a0a]/20 group-hover:bg-transparent transition-colors duration-500" />
+
+          {/* HOVER ACTIONS */}
+          <div className="absolute inset-0 flex items-center justify-center gap-4 bg-[#050a0a]/60 opacity-0 group-hover:opacity-100 transition-all duration-500 backdrop-blur-sm z-20">
+            <motion.a
+              whileHover={{ scale: 1.1 }}
+              href="#" className="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center hover:bg-[#10b981] hover:text-white transition-colors"
+            >
+              <Github size={20} />
+            </motion.a>
+            <motion.a
+              whileHover={{ scale: 1.1 }}
+              href="#" className="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center hover:bg-[#10b981] hover:text-white transition-colors"
+            >
+              <ExternalLink size={20} />
+            </motion.a>
+          </div>
         </div>
-        
-        <p className="text-white/40 text-sm leading-relaxed mb-6 font-normal line-clamp-2 group-hover:text-white/60 transition-colors">
-          {project.desc}
-        </p>
 
-        <div className="flex flex-wrap gap-4">
-          {project.tech.map((t) => (
-            <span key={t} className="text-[9px] font-mono uppercase tracking-[2px] text-white/30 group-hover:text-[#10b981] transition-colors">
-              {t}
-            </span>
-          ))}
+        {/* PROJECT INFO */}
+        <div className="relative z-30" style={{ transform: "translateZ(50px)" }}>
+          <div className="flex justify-between items-center mb-4">
+            <h3 className="text-xl font-bold tracking-tight uppercase group-hover:text-[#10b981] transition-colors duration-300">
+              {project.title}
+            </h3>
+            <ArrowUpRight className="text-white/20 group-hover:text-[#10b981] transition-all duration-300" size={20} />
+          </div>
+
+          <p className="text-white/40 text-sm leading-relaxed mb-6 font-normal line-clamp-2 group-hover:text-white/60 transition-colors">
+            {project.desc}
+          </p>
+
+          <div className="flex flex-wrap gap-4">
+            {project.tech.map((t) => (
+              <span key={t} className="text-[9px] font-mono uppercase tracking-[2px] text-white/30 group-hover:text-[#10b981] transition-colors">
+                {t}
+              </span>
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div className="absolute -bottom-2 left-0 w-0 h-[2px] bg-[#10b981] group-hover:w-full transition-all duration-700 opacity-50" />
-    </motion.div>
+        <div className="absolute -bottom-2 left-0 w-0 h-[2px] bg-[#10b981] group-hover:w-full transition-all duration-700 opacity-50" />
+      </motion.div>
+    </div>
   );
 };
 
 const Projects = () => {
   const sectionRef = useRef(null);
-  
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"]
@@ -138,49 +142,51 @@ const Projects = () => {
   // 3. BACKGROUND PARALLAX
   const bgMove = useTransform(scrollYProgress, [0, 1], [-100, 100]);
 
- const projectData = [
-  {
-    id: 1,
-    title: "CodeWild LearningHub Website",
-    desc: "A modern and responsive company website designed to showcase services, training programs, and digital solutions with a clean user experience and professional branding.",
-    tech: ["React.js", "Tailwind CSS", "Firebase"],
-    img: "/image.png"
-  },
+  const projectData = [
+    {
+      id: 1,
+      title: "CodeWild LearningHub Website",
+      desc: "A modern and responsive company website designed to showcase services, training programs, and digital solutions with a clean user experience and professional branding.",
+      tech: ["React.js", "Tailwind CSS", "Firebase"],
+      img: "/image.png"
+    },
+    {
+      id: 2,
+      title: "Privielle Online Shopping Website",
+      desc: "An elegant e-commerce platform built for seamless online shopping with attractive product displays, smooth navigation, and a user-friendly purchasing experience.",
+      tech: ["Next.js", "MongoDB", "Stripe"],
+      img: "/privielle.png"
+    },
+    {
+      id: 3,
+      title: "SMR Holidays Tourism Website",
+      desc: "A visually engaging tourism website created to promote travel packages, destinations, and holiday experiences with interactive design and responsive layouts.",
+      tech: ["React.js", "Node.js", "Tailwind CSS"],
+      img: "/smr.png"
+    },
+  ];
 
-  {
-    id: 2,
-    title: "Privielle Online Shopping Website",
-    desc: "An elegant e-commerce platform built for seamless online shopping with attractive product displays, smooth navigation, and a user-friendly purchasing experience.",
-    tech: ["Next.js", "MongoDB", "Stripe"],
-    img: "/privielle.png"
-  },
-
-  {
-    id: 3,
-    title: "SMR Holidays Tourism Website",
-    desc: "A visually engaging tourism website created to promote travel packages, destinations, and holiday experiences with interactive design and responsive layouts.",
-    tech: ["React.js", "Node.js", "Tailwind CSS"],
-    img: "/smr.png"
-  },
-];
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.2 },
+      transition: {
+        staggerChildren: 0.25, // Delays card animations sequentially for a clean effect
+        delayChildren: 0.1
+      },
     },
   };
 
   return (
     <section ref={sectionRef} className="bg-[#050a0a] text-white py-24 px-6 overflow-hidden relative" id="projects">
       {/* BACKGROUND AMBIENCE: Moves with scroll */}
-      <motion.div 
+      <motion.div
         style={{ x: bgMove }}
-        className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#10b981]/5 blur-[120px] rounded-full pointer-events-none" 
+        className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#10b981]/5 blur-[120px] rounded-full pointer-events-none"
       />
 
       <div className="max-w-7xl mx-auto relative">
-        <motion.header 
+        <motion.header
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -200,12 +206,13 @@ const Projects = () => {
           </p>
         </motion.header>
 
-        <motion.div 
+        {/* The stagger trigger triggers when 15% of the card grid is visible */}
+        <motion.div
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={{ once: true, amount: 0.15 }}
         >
           {projectData.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
