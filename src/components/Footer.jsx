@@ -57,7 +57,9 @@ const Footer = () => {
 
             {/* CONTACT ME BUTTON - Also ensuring no underline here */}
             <motion.a
-              href="#contact"
+              href="https://wa.me/919486366437"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-white !text-black px-7 py-3 rounded-full text-[11px] font-bold uppercase tracking-wider hover:bg-[#10b981] hover:!text-white transition-colors no-underline !decoration-transparent inline-block border-none"

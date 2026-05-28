@@ -43,10 +43,10 @@ const Experience = () => {
   return (
     <section className="bg-[#fcfcfc] py-32 px-6 overflow-hidden" id="experience">
       <div className="max-w-6xl mx-auto">
-        
+
         {/* Header Area */}
         <header className="mb-24 text-center">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -96,8 +96,8 @@ const Experience = () => {
                   {exp.company}
                 </h3>
                 <div className={`inline-flex items-center gap-2 ${exp.accent} font-black text-xs tracking-[3px] uppercase mb-10 bg-white/60 px-4 py-2 rounded-lg`}>
-                   <div className={`w-2 h-2 rounded-full bg-current shadow-lg`} />
-                   {exp.role}
+                  <div className={`w-2 h-2 rounded-full bg-current shadow-lg`} />
+                  {exp.role}
                 </div>
 
                 {/* Expanded Bullet Points */}
@@ -115,8 +115,8 @@ const Experience = () => {
                 {/* Tech Tags */}
                 <div className="flex flex-wrap gap-2 pt-6 border-t border-black/5">
                   {exp.tech.map((tag) => (
-                    <span 
-                      key={tag} 
+                    <span
+                      key={tag}
                       className="px-4 py-2 bg-white/40 text-slate-500 text-[10px] font-black uppercase tracking-widest rounded-xl border border-white/60 group-hover:bg-slate-900 group-hover:text-white group-hover:border-slate-900 transition-all duration-300"
                     >
                       {tag}
